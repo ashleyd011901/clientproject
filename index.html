@@ -22,19 +22,9 @@
 
   <!-- Custom styles for this template -->
   <link href="css/agency.min.css" rel="stylesheet">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <!-- Your CSS Linked Below-->
-  <link rel="stylesheet" href="css/style.css">
-  <!-- jQuery Linked Below-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <!-- Bootstrap Javascript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  <!-- Your Javascript Linked Below-->
-  <script src="js/script.js" defer></script>
+
+  <script src="js/custom.js" async></script>
+
 </head>
 
 <body id="page-top">
@@ -42,7 +32,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Star Bootstrap</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
@@ -50,16 +40,16 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+            <a class="nav-link js-scroll-trigger" href="#top3">Top3</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+            <a class="nav-link js-scroll-trigger" href="#portfolio">Genres</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+            <a class="nav-link js-scroll-trigger" href="#about">Songs</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#team">Team</a>
+            <a class="nav-link js-scroll-trigger" href="#team">Creators</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
@@ -67,6 +57,16 @@
         </ul>
       </div>
     </div>
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search your songs" name="srch-term" id="search-term">
+      <div class="input-group-btn">
+        <button id="search" class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span>Search</button>
+      </div>
+      <!-- IM TRYING OUT A COOL SEARCH BAR THING.-->
+      <!--<div class = "modal-search modal fade show" id="search" tabindex = "-1" role= "dialog" aria-labelledby = "myModalLabel"-->
+      <!--        style="display: block;"></div>-->
+
+      <div id="result"></div>
   </nav>
 
   <!-- Header -->
@@ -85,7 +85,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-          <h2 class="section-heading text-uppercase">Services</h2>
+          <h2 class="section-heading text-uppercase">Top 3</h2>
           <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
         </div>
       </div>
@@ -116,15 +116,17 @@
         </div>
       </div>
     </div>
+
   </section>
 
   <!-- Portfolio Grid -->
+  <!--Genres-->
   <section class="bg-light" id="portfolio">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-          <h2 class="section-heading text-uppercase">Portfolio</h2>
-          <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+          <h2 class="section-heading text-uppercase">Genres</h2>
+          <h3 class="section-subheading text-muted">Coming Soon</h3>
         </div>
       </div>
       <div class="row">
@@ -135,11 +137,11 @@
                 <i class="fa fa-plus fa-3x"></i>
               </div>
             </div>
-            <img class="img-fluid" src="img/portfolio/01-thumbnail.jpg" alt="">
+            <img class="img-fluid" src="img/portfolio/comingsoon.png" alt="">
           </a>
           <div class="portfolio-caption">
-            <h4>Threads</h4>
-            <p class="text-muted">Illustration</p>
+            <h4>Rap</h4>
+            <p class="text-muted">1</p>
           </div>
         </div>
         <div class="col-md-4 col-sm-6 portfolio-item">
@@ -149,11 +151,11 @@
                 <i class="fa fa-plus fa-3x"></i>
               </div>
             </div>
-            <img class="img-fluid" src="img/portfolio/02-thumbnail.jpg" alt="">
+            <img class="img-fluid" src="img/portfolio/comingsoon.png" alt="">
           </a>
           <div class="portfolio-caption">
-            <h4>Explore</h4>
-            <p class="text-muted">Graphic Design</p>
+            <h4>Rock</h4>
+            <p class="text-muted">2</p>
           </div>
         </div>
         <div class="col-md-4 col-sm-6 portfolio-item">
@@ -163,11 +165,11 @@
                 <i class="fa fa-plus fa-3x"></i>
               </div>
             </div>
-            <img class="img-fluid" src="img/portfolio/03-thumbnail.jpg" alt="">
+            <img class="img-fluid" src="img/portfolio/comingsoon.png" alt="">
           </a>
           <div class="portfolio-caption">
-            <h4>Finish</h4>
-            <p class="text-muted">Identity</p>
+            <h4>Pop</h4>
+            <p class="text-muted">3</p>
           </div>
         </div>
         <div class="col-md-4 col-sm-6 portfolio-item">
@@ -177,11 +179,11 @@
                 <i class="fa fa-plus fa-3x"></i>
               </div>
             </div>
-            <img class="img-fluid" src="img/portfolio/04-thumbnail.jpg" alt="">
+            <img class="img-fluid" src="img/portfolio/comingsoon.png" alt="">
           </a>
           <div class="portfolio-caption">
-            <h4>Lines</h4>
-            <p class="text-muted">Branding</p>
+            <h4>KPOP</h4>
+            <p class="text-muted">4</p>
           </div>
         </div>
         <div class="col-md-4 col-sm-6 portfolio-item">
@@ -191,11 +193,11 @@
                 <i class="fa fa-plus fa-3x"></i>
               </div>
             </div>
-            <img class="img-fluid" src="img/portfolio/05-thumbnail.jpg" alt="">
+            <img class="img-fluid" src="img/portfolio/comingsoon.png" alt="">
           </a>
           <div class="portfolio-caption">
-            <h4>Southwest</h4>
-            <p class="text-muted">Website Design</p>
+            <h4>R&B</h4>
+            <p class="text-muted">5</p>
           </div>
         </div>
         <div class="col-md-4 col-sm-6 portfolio-item">
@@ -205,11 +207,11 @@
                 <i class="fa fa-plus fa-3x"></i>
               </div>
             </div>
-            <img class="img-fluid" src="img/portfolio/06-thumbnail.jpg" alt="">
+            <img class="img-fluid" src="img/portfolio/comingsoon.png" alt="">
           </a>
           <div class="portfolio-caption">
-            <h4>Window</h4>
-            <p class="text-muted">Photography</p>
+            <h4>EDM</h4>
+            <p class="text-muted">6</p>
           </div>
         </div>
       </div>
@@ -221,7 +223,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-          <h2 class="section-heading text-uppercase">About</h2>
+          <h2 class="section-heading text-uppercase">Songs</h2>
           <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
         </div>
       </div>
@@ -302,7 +304,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-          <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
+          <h2 class="section-heading text-uppercase">Creators</h2>
           <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
         </div>
       </div>
