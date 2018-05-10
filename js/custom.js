@@ -1,90 +1,71 @@
-//function giphyURLWithSearchTerm(searchTerm) {
-    //var url = "https://api.soundcloud.com/tracks?q=beyonce&client_id=513158665";
- //   var url = "https://api.soundcloud.com/tracks?q=beyonce&client_id=5aa8e389ba4e24b6106af5159ab3e344";
-  //  console.log("The url is: " + url);
-  //  return url;
-//}
+/*global $*/
 
-//function displayTitle(title) {
-//    $("#result").html("<h1>" + title + "</h1>");
-//}
-
-//function callGiphyAPIWithSearchTerm(searchTerm) {
-  //  var apiUrl = giphyURLWithSearchTerm(searchTerm);
-    
- //   $.ajax({
-  //    url: apiUrl,
-  //    method: "GET",
-  //    success: function(response) {
-  //        console.log(response);
-   //       var title = response[0].title;
-  //        //var imageUrl = response.data[0].images.original.url;
-  //        console.log("The song title is: " + title);
-  //        displayTitle(title);
-   //   },
-   // }); 
-//}
 
 $(document).ready(function() {
-    $("#search").click(function() {
-        console.log("Search Button clicked");
-        var search= $("#search-term").val();
-        callGiphyAPIWithSearchTerm(search);
+    // var counter = 0;
+    var currentInput = '';
+
+    $("#searchButton").click(function() {
+        var input = $("#searchInput").val();
+        fetchGiphy(input);
     });
 });
 
+function fetchGiphy(i) {
+    $.ajax({
+        url: "https://api.soundcloud.com/tracks?q=" + i + "&limit=50&client_id=5aa8e389ba4e24b6106af5159ab3e344",
+        method: "GET",
+        success: function(response) {
+            var songs = [];
+            
+            for (var i = 0; i < response.length; i++) {
+                if (response[i].artwork_url != null) {
+                    var song = {
+                        "title": response[i].title,
+                        "image": response[i].artwork_url,
+                        "duration": millisToMinutesAndSeconds(response[i].duration)
+                    }
+                    songs.push(song);
+                }
+            }
+            
+            $('#listOfSongs').html("");
+            for (var i = 0; i < songs.length; i++) {
+                displaySong(songs[i], i);
+            }
+        },
+    });
+}
 
-// /*global $*/
-  
- $(document).ready(function() {
-     var counter = 0;
-     var currentInput = '';
-     function fetchGiphy(i) {
-         $.ajax({
-             url: "https://api.soundcloud.com/tracks?q=" + i + "&client_id=5aa8e389ba4e24b6106af5159ab3e344",
-             method: "GET",
-            success: function(response) {
-                //Log the orignal image to the console    
-                 var image = response[0].artwork_url;
-                 var title = response[0].title;
-                 var duration = response[0].duration;
-                
-                 var image2 = response[1].artwork_url;
-                 var title2 = response[1].title;
-                 var duration2 = response[1].duration;
-             console.log(response);
-                 //Log the url from the orignial gif to the console  
-                 $('#album_cover').html('<img src=' + image + '>');
-                 $('#title').html(title);
-                 $('#duration').html(millisToMinutesAndSeconds(duration));
-                
-                 $('#album_cover2').html('<img src=' + image2 + '>');
-                 console.log(image2);
-                 $('#title2').html(title2);
-                 $('#duration2').html(millisToMinutesAndSeconds(duration2));
-                 ////// TURN THIS INTO  A FOR LOOP ONLY UPTO 4 SPACES ADDD PICS FOR THE GENRES 
-              for (var i = 0; i < response.Search.length; i++) {
-					if (response.Search[i].Poster !== "N/A") {
-						$('.result').append(
-							'<img data-toggle="modal" data-target="#modal-' + i + '" class="col-md-3 songs" src=' + response.Search[i].Poster + '>'
-						);
-						console.log("The amount of Songs being displayed to the screen: " + response.Search.length);
-						console.log("The total amount of possible Songs " + response.Search[1].totalResults);
-					}
-				}
-                 // $('#gif').html('<img src=' + image + '>');
-                 //adding info from gif to urls
-             },
-         });
-     }
-     $("#searchButton").click(function() {
-        var input = $("#searchInput").val();
-        fetchGiphy(input);
-     });
- });
+function millisToMinutesAndSeconds(millis) {
+    var minutes = Math.floor(millis / 60000);
+    var seconds = ((millis % 60000) / 1000).toFixed(0);
+    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+}
 
- function millisToMinutesAndSeconds(millis) {
-   var minutes = Math.floor(millis / 60000);
-   var seconds = ((millis % 60000) / 1000).toFixed(0);
-   return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
- }
+
+function displaySong(song, index) {
+    
+    $('#listOfSongs').append(
+     '<div id="album_cover' + index + '" class="text-center"></div>' +
+                  ' <div id="title'+ index +'" class="text-center"></div>' +
+                   '<div id="duration' + index + '" class="text-center"></div>'
+    )
+    var titleHtml = "<p> Title: " + song.title + "</p>";
+    var durationHtml = "<p> Duration: " + song.duration + "</p>";
+    var imageHtml = "<img src =" + song.image + ">";
+
+    $('#album_cover' + index).html(imageHtml);
+    $('#title' + index).html(titleHtml);
+    $('#duration' + index).html(durationHtml);
+}
+
+function displaySong_old(song, order) {
+    var songIndex = $("#song-" + order);
+    console.log("renderPlayList");
+    $(".songs").append("<div class='song' id='song-" + order + "'><br><div class='remove'>&#10007;</div></div>");
+    songIndex.append("<p> Title:" + song.title + "</p>");
+    songIndex.append("<p> Artist:" + song.artist + "</p>");
+    songIndex.append("<a href ='" + song["mp3-url"] + "'> <h5 class= 'header'>Play Song</h5> </a>");
+    songIndex.append("<img src =" + song["image-url"] + ">");
+}
