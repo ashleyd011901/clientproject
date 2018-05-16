@@ -2,12 +2,12 @@
 
 
 $(document).ready(function() {
-    // var counter = 0;
-    var currentInput = '';
-
     $("#searchButton").click(function() {
-        var input = $("#searchInput").val();
+        var input = $("#search-term").val();
+        console.log(input);
         fetchGiphy(input);
+        $("146").hides
+        
     });
 });
 
@@ -24,6 +24,7 @@ function fetchGiphy(i) {
                         "title": response[i].title,
                         "image": response[i].artwork_url,
                         "duration": millisToMinutesAndSeconds(response[i].duration)
+                        // "Song": response[i].permalink_url
                     }
                     songs.push(song);
                 }
@@ -50,22 +51,20 @@ function displaySong(song, index) {
      '<div id="album_cover' + index + '" class="text-center"></div>' +
                   ' <div id="title'+ index +'" class="text-center"></div>' +
                    '<div id="duration' + index + '" class="text-center"></div>'
+                //   '<div id="song' + index + '" class="text-center"></div>'
     )
     var titleHtml = "<p> Title: " + song.title + "</p>";
     var durationHtml = "<p> Duration: " + song.duration + "</p>";
     var imageHtml = "<img src =" + song.image + ">";
+    // var songHtml = "<a href=" + song.song + "</a>";
 
     $('#album_cover' + index).html(imageHtml);
     $('#title' + index).html(titleHtml);
     $('#duration' + index).html(durationHtml);
+    // $('#song' + index).html(songHtml);
 }
 
-function displaySong_old(song, order) {
-    var songIndex = $("#song-" + order);
-    console.log("renderPlayList");
-    $(".songs").append("<div class='song' id='song-" + order + "'><br><div class='remove'>&#10007;</div></div>");
-    songIndex.append("<p> Title:" + song.title + "</p>");
-    songIndex.append("<p> Artist:" + song.artist + "</p>");
-    songIndex.append("<a href ='" + song["mp3-url"] + "'> <h5 class= 'header'>Play Song</h5> </a>");
-    songIndex.append("<img src =" + song["image-url"] + ">");
-}
+
+
+
+
